@@ -1,5 +1,5 @@
 import { userModel } from "../../../../DB/model/user.model.js"
-import cloudinary from '../../../../service/cloudniary.js'
+import cloudinary from '../../../../service/cloudinary.js'
 
 
 export const profile = async(req,res)=>{
@@ -14,7 +14,7 @@ export const profilePic = async(req,res)=>{
         }else{
             const {secure_url} =await cloudinary.uploader.upload(req.file.path, {folder:`user/${req.user._id}/profilePic`})
             const user = await userModel.findOneAndUpdate({_id:req.user._id} , {profilePic:secure_url})
-            res.status(200).json({message:'Done'})
+            res.status(200).json({message:'Done', user})
         }
     } catch (error) {
         res.status(404).json({message:'catch error ' , error})

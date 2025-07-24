@@ -5,7 +5,7 @@ const connectedDB =async()=>{
         console.log(`DateBase server connected`);
         
     }).catch(err=>{
-        console.log('database connection failed ');
+        console.log('database connection failed ' , err);
         
     })
 } 

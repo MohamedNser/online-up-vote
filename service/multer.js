@@ -1,11 +1,13 @@
 import multer from 'multer'
 export const fileValidation = {
-    image:['image/png' ,'image/jpeg','image/jif'   ]
+    image:['image/png' ,'image/jpg','image/jif' ]
 }
 
 export const HME = (err , req,res,next)=>{
     if (err) {
         res.status(400).json({message:"multer error" , err})
+        console.log(err);
+        
     } else {
         next()
     }

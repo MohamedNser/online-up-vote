@@ -13,7 +13,7 @@ try {
         const hash = bcrypt.hashSync(password ,parseInt(process.env.SALTROUND) )
         const savedUser = await userModel.create({userName: name , email , password:hash})
         if (!savedUser) {
-            res.stauts(400).json({message:'fail to register yout account'})
+            res.stauts(400).json({message:'fail to register youق account'})
         } else {
             const token = jwt.sign({id: savedUser._id} ,process.env.TOKENEMAILSUGNTURE, {expiresIn:'1h'})
             const link = `${req.protocol}://${req.headers.host}${process.env.BASEURL}/auth/confirmEmail/${token}`
@@ -60,7 +60,7 @@ try {
     const {email ,  password} = req.body;
     const user = await userModel.findOne({email})
     if (!user) {
-        res.stauts(400).json({message:'IN-valid email exsist'})
+        res.stauts(400).json({message:'IN-valid email exist'})
         if (user.confirmEmail) {
         res.status(400).json({message:'confirm email first'})
         }

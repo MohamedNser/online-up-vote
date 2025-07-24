@@ -1,10 +1,11 @@
 import jwt from "jsonwebtoken"
 import { userModel } from "../../DB/model/user.model.js";
 export const auth = ()=>{
-    return async (req , res , next)=>{
+    try {
+        return async (req , res , next)=>{
         const {authorization} = req.headers;
-        if (!authorization?.startswith(process.env.BERERTOKEN)) {
-            res.stauts(400).json({message:"in-valid bearer  token "})
+        if (!authorization?.startsWith(process.env.BERERTOKEN)) {
+            res.json({message:"in-valid bearer  token "})
         } else {
             const token = authorization.split(process.env.BERERTOKEN)[1] 
             const decoded = jwt.verify(token ,process.env.AUTHTOKEN )
@@ -21,4 +22,7 @@ export const auth = ()=>{
             }
         }
     }
+    } catch (error) {
+        res.stauts(401).json({message:"catch error found" , error}) 
+    }  
 }
