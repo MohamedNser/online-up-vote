@@ -1,43 +1,40 @@
 # Online Up Vote
 
-An API backend built with **Node.js** and **Express.js** for a voting platform similar to Reddit or Stack Overflow, where users can create posts and vote on them.
+A Node.js backend API for a voting platform inspired by Reddit and Stack Overflow.  
+Users can create posts, comment on them, and interact with the content dynamically.
 
 ---
 
 ## ✅ Features Implemented
-- User Registration and Login with JWT Authentication
-- Password encryption using Bcrypt
-- Create, Edit, and Delete Posts
-- Image upload for posts using Multer and Cloudinary
-- Basic Upvote/Downvote functionality
-- Data Validation with Joi
-- MongoDB Integration via Mongoose
-- Email Service Setup via Nodemailer *(Feature in Progress)*
+
+- User Registration and Login with JWT Authentication  
+- Password Encryption with Bcrypt  
+- Add Comments to Posts  
+- Upload Post Images using Multer and Cloudinary  
+- Basic Upvote/Downvote Functionality *(In Progress)*  
+- Data Validation using Joi  
+- MongoDB Integration with Mongoose  
 
 ---
 
-## 🚧 Features In Progress
-- Voting restriction (1 vote per user per post)
-- Sorting posts by votes and latest date
-- Comment system on posts
-- User leaderboard based on votes
+## 🛠️ Tech Stack
 
----
-
-## 🛠️ Technologies Used
-- **Node.js**
-- **Express.js**
-- **MongoDB + Mongoose**
-- **JWT for Authentication**
-- **Bcryptjs for Password Hashing**
-- **Joi for Data Validation**
-- **Multer + Cloudinary for Image Upload**
-- **Nodemailer for Emails**
+- Node.js + Express.js  
+- MongoDB + Mongoose  
+- JWT & Bcrypt  
+- Multer + Cloudinary  
+- Joi (Validation)  
+- Git & GitHub  
+- Postman for Testing  
 
 ---
 
 ## 🚀 Getting Started
 
-### Install Dependencies
+### Installation
+
 ```bash
+git clone https://github.com/MohamedNser/online-up-vote.git
+cd online-up-vote
 npm install
+npm run dev
