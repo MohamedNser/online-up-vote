@@ -9,11 +9,14 @@ Users can create posts, comment on them, and interact with the content dynamical
 
 - User Registration and Login with JWT Authentication  
 - Password Encryption with Bcrypt  
+- Create, Edit, and Delete Posts  
 - Add Comments to Posts  
+- Like and Dislike Posts  
 - Upload Post Images using Multer and Cloudinary  
 - Basic Upvote/Downvote Functionality *(In Progress)*  
 - Data Validation using Joi  
 - MongoDB Integration with Mongoose  
+
 
 ---
 
