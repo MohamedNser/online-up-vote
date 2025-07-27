@@ -1,7 +1,6 @@
 import { CommentModel } from "../../../../DB/model/comment.model.js";
 import { postModel } from "../../../../DB/model/post.model.js";
-import cloudinary from "../../../../service/cloudinary.js"
-import { comment } from "./comment.js";
+import cloudinary from "../../../../service/cloudinary.js";
 
 
 export const post = async(req,res)=>{
@@ -38,4 +37,28 @@ for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
     
 }
 res.json({message:"DONE" , postList})
+}
+
+export const likePost = async (req,res)=>{
+    const {postId} = req.params;
+    const post = await postModel.findOneAndUpdate({_id: postId , likes:{$nin: req.user._id}}, {
+        $push:{likes:req.user._id},
+        $pull:{dislike:req.user._id},
+        $inc:{totalCount:1}
+    },{
+        new:true
+    })
+    res.json({message:'Done' , post})
+}
+
+export const dislikePost = async (req,res)=>{
+    const {postId} = req.params;
+    const post = await postModel.findOneAndUpdate({_id:postId , dislike:{$nin:req.user._id}}, {
+        $push:{dislike:req.user._id},
+        $pull:{like:req.user._id},
+        $inc:{totalCount:-1}
+    },{
+        new:true
+    })
+    res.json({message:'Done' , post})
 }
