@@ -9,6 +9,7 @@ const userSchema = new Schema ({
     coverPic:Array,
     gender:{type:String ,default:'Male' , enum:['Male' , 'Female']},
     phone:String ,
+    role:{type:String , default:"User"}
 },{
     timestamps:true
 })

@@ -1,6 +1,11 @@
 import jwt from "jsonwebtoken"
 import { userModel } from "../../DB/model/user.model.js";
-export const auth = ()=>{
+export const roles = {
+    Admin:"Admin",
+    HR:'HR',
+    User:'User'
+}
+export const auth = (accessRoles=[])=>{
     try {
         return async (req , res , next)=>{
         const {authorization} = req.headers;
@@ -16,8 +21,14 @@ export const auth = ()=>{
                 if (!user) {
                 res.stauts(401).json({message:"not register user"}) 
                 } else {
+                    console.log(accessRoles);
+                    console.log(accessRoles.includes(user.role));
+                    if (!accessRoles.includes(user.role)) {
+                        res.stauts(403).json({message:"un-authruzion"})
+                    } else {
                     req.user = user
                     next()
+                    }
                 }
             }
         }

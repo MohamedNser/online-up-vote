@@ -1,6 +1,7 @@
 import { CommentModel } from "../../../../DB/model/comment.model.js";
 import { postModel } from "../../../../DB/model/post.model.js";
 import cloudinary from "../../../../service/cloudinary.js";
+import { pagination } from "../../../../service/pigination.js";
 
 
 export const post = async(req,res)=>{
@@ -21,7 +22,9 @@ export const post = async(req,res)=>{
 
 export const getPosts = async(req,res)=>{
     const postList = []
-    const cursor = postModel.find({}).cursor();
+    const {page , size} = req.query
+    const {skip , limit }=  pagination(page , size)
+    const cursor = postModel.find({}).limit(limit).skip(skip).cursor();
 
 for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
     console.log(doc);
